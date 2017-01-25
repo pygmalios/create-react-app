@@ -15,9 +15,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
+var chalk = require('chalk');
 
 // @remove-on-eject-begin
 // `path` is not used after eject - see https://github.com/facebookincubator/create-react-app/issues/1174
@@ -214,6 +216,10 @@ module.exports = {
     ];
   },
   plugins: [
+    // Generates building progress bar
+    new ProgressBarPlugin({
+      format: `building [:bar] ${chalk.green.bold(':percent')} (:elapsed seconds)`
+    }),
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
