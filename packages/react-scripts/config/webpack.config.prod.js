@@ -15,7 +15,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
@@ -107,8 +106,8 @@ module.exports = {
   // Resolve loaders (webpack plugins for CSS, images, transpilation) from the
   // directory of `react-scripts` itself rather than the project directory.
   resolveLoader: {
-    root: paths.ownNodeModules,
-    moduleTemplates: ['*-loader']
+    root: paths.ownNodeModules
+    // moduleTemplates: ['*-loader']
   },
   // @remove-on-eject-end
   module: {
@@ -216,10 +215,6 @@ module.exports = {
     ];
   },
   plugins: [
-    // Generates building progress bar
-    new ProgressBarPlugin({
-      format: `building [:bar] ${chalk.green.bold(':percent')} (:elapsed seconds)`
-    }),
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
