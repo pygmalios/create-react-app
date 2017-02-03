@@ -15,10 +15,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+let FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
-var chalk = require('chalk');
 
 // @remove-on-eject-begin
 // `path` is not used after eject - see https://github.com/facebookincubator/create-react-app/issues/1174
@@ -269,6 +269,13 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
+    }),
+    // Generates favicons with webpack
+    new FaviconsWebpackPlugin({
+      logo: paths.appPublic + '/favicon.png',
+      prefix: 'favicons-[hash:8]/',
+      persistentCache: true,
+      inject: true
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
