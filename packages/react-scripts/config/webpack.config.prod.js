@@ -15,7 +15,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-let FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
@@ -239,6 +239,13 @@ module.exports = {
         minifyURLs: true
       }
     }),
+    // Generates favicons with webpack
+    new FaviconsWebpackPlugin({
+      logo: paths.appPublic + '/favicon.png',
+      prefix: 'favicons-[hash:8]/',
+      persistentCache: true,
+      inject: true
+    }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
@@ -269,13 +276,6 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
-    }),
-    // Generates favicons with webpack
-    new FaviconsWebpackPlugin({
-      logo: paths.appPublic + '/favicon.png',
-      prefix: 'favicons-[hash:8]/',
-      persistentCache: true,
-      inject: true
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
