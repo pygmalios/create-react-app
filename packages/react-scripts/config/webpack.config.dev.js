@@ -217,7 +217,7 @@ module.exports = {
     // Generates favicons with webpack
     new FaviconsWebpackPlugin({
       logo: paths.appPublic + '/favicon.png',
-      prefix: 'favicons-[hash:8]/',
+      prefix: 'static/media/favicons-[hash:8]/',
       persistentCache: true,
       inject: true
     }),
