@@ -1,6 +1,6 @@
 {
   "name": "@pygmalios/react-scripts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Configuration and scripts for Create React App.",
   "repository": "facebookincubator/create-react-app",
   "license": "BSD-3-Clause",
@@ -44,6 +44,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.9.0",
+    "express": "^4.14.1",
     "extract-text-webpack-plugin": "1.0.1",
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^0.10.0",
