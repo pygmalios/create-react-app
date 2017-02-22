@@ -419,7 +419,7 @@ Then we can change `start` and `build` scripts to include the CSS preprocessor c
 ```diff
    "scripts": {
      "build-css": "node-sass src/ -o src/",
-     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch",
+     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
 -    "start": "react-scripts start",
 -    "build": "react-scripts build",
 +    "start-js": "react-scripts start",
@@ -884,8 +884,8 @@ it('sums numbers', () => {
 });
 ```
 
-All `expect()` matchers supported by Jest are [extensively documented here](http://facebook.github.io/jest/docs/api.html#expect-value).<br>
-You can also use [`jest.fn()` and `expect(fn).toBeCalled()`](http://facebook.github.io/jest/docs/api.html#tobecalled) to create “spies” or mock functions.
+All `expect()` matchers supported by Jest are [extensively documented here](http://facebook.github.io/jest/docs/expect.html).<br>
+You can also use [`jest.fn()` and `expect(fn).toBeCalled()`](http://facebook.github.io/jest/docs/expect.html#tohavebeencalled) to create “spies” or mock functions.
 
 ### Testing Components
 
@@ -943,7 +943,7 @@ it('renders welcome message', () => {
 });
 ```
 
-All Jest matchers are [extensively documented here](http://facebook.github.io/jest/docs/api.html#expect-value).<br>
+All Jest matchers are [extensively documented here](http://facebook.github.io/jest/docs/expect.html).<br>
 Nevertheless you can use a third-party assertion library like [Chai](http://chaijs.com/) if you want to, as described below.
 
 Additionally, you might find [jest-enzyme](https://github.com/blainekasten/enzyme-matchers) helpful to simplify your tests with readable matchers. The above `contains` code can be written simpler with jest-enzyme.
@@ -953,6 +953,10 @@ expect(wrapper).toContainReact(welcome)
 ```
 
 To setup jest-enzyme with Create React App, follow the instructions for [initializing your test environment](#initializing-test-environment) to import `jest-enzyme`.
+
+```sh
+npm install --save-dev jest-enzyme
+```
 
 ```js
 // src/setupTests.js
